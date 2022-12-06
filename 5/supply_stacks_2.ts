@@ -34,15 +34,11 @@ const move = (
   fromIdx: number,
   toIdx: number
 ) => {
-  const interimStack: string[] = [];
+  const blocks: string[] = stacks[fromIdx].splice(
+    stacks[fromIdx].length - amount
+  );
 
-  for (let i = 0; i < amount; i++) {
-    interimStack.push(stacks[fromIdx].pop() as string);
-  }
-
-  for (let i = 0; i < amount; i++) {
-    stacks[toIdx].push(interimStack.pop() as string);
-  }
+  stacks[toIdx].push(...blocks);
 };
 
 const processInstruction = (stacks: string[][], instruction: string) => {
@@ -55,7 +51,7 @@ const processInstruction = (stacks: string[][], instruction: string) => {
   move(stacks, amount, fromIdx, toIdx);
 };
 
-const data = getTextInput("input.txt");
+const data = getTextInput("test.txt");
 
 let [initialStacks, allInstructions] = data.split("\n\n");
 
