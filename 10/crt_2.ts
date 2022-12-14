@@ -15,7 +15,6 @@ const xPerCycle: { [key: number]: number } = {};
 const instructions = data.split("\n");
 
 const logCycle = (cycle: number, x: number) => {
-  console.log(`x at cycle ${cycle}: ${x}`);
   xPerCycle[cycle] = x;
 };
 
